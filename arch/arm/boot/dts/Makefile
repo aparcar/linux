@@ -1280,9 +1280,9 @@ dtb-$(CONFIG_MACH_ARMADA_38X) += \
 	armada-385-clearfog-gtr-l8.dtb \
 	armada-385-db-88f6820-amc.dtb \
 	armada-385-db-ap.dtb \
-	armada-385-linksys-shelby.dtb \
 	armada-385-linksys-wrt1200ac.dtb \
 	armada-385-linksys-wrt1900ac-v2.dtb \
+	armada-385-linksys-wrt1900acs.dtb \
 	armada-385-linksys-wrt3200acm.dtb \
 	armada-385-synology-ds116.dtb \
 	armada-385-turris-omnia.dtb \
