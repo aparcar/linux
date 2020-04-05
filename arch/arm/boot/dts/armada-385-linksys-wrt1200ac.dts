@@ -10,64 +10,64 @@
 
 / {
 	model = "Linksys WRT1200AC";
-	compatible = "linksys,caiman", "linksys,armada385", "marvell,armada385",
-		     "marvell,armada380";
+	compatible = "linksys,wrt1200ac", "linksys,caiman", "linksys,armada385",
+		     "marvell,armada385", "marvell,armada380";
 };
 
 &expander0 {
 	wan_amber@0 {
-		label = "caiman:amber:wan";
+		label = "wrt1200ac:amber:wan";
 		reg = <0x0>;
 	};
 
 	wan_white@1 {
-		label = "caiman:white:wan";
+		label = "wrt1200ac:white:wan";
 		reg = <0x1>;
 	};
 
 	wlan_2g@2 {
-		label = "caiman:white:wlan_2g";
+		label = "wrt1200ac:white:wlan_2g";
 		reg = <0x2>;
 	};
 
 	wlan_5g@3 {
-		label = "caiman:white:wlan_5g";
+		label = "wrt1200ac:white:wlan_5g";
 		reg = <0x3>;
 	};
 
 	usb2@5 {
-		label = "caiman:white:usb2";
+		label = "wrt1200ac:white:usb2";
 		reg = <0x5>;
 	};
 
 	usb3_1@6 {
-		label = "caiman:white:usb3_1";
+		label = "wrt1200ac:white:usb3_1";
 		reg = <0x6>;
 	};
 
 	usb3_2@7 {
-		label = "caiman:white:usb3_2";
+		label = "wrt1200ac:white:usb3_2";
 		reg = <0x7>;
 	};
 
 	wps_white@8 {
-		label = "caiman:white:wps";
+		label = "wrt1200ac:white:wps";
 		reg = <0x8>;
 	};
 
 	wps_amber@9 {
-		label = "caiman:amber:wps";
+		label = "wrt1200ac:amber:wps";
 		reg = <0x9>;
 	};
 };
 
 &gpio_leds {
 	power {
-		label = "caiman:white:power";
+		label = "wrt1200ac:white:power";
 	};
 
 	sata {
-		label = "caiman:white:sata";
+		label = "wrt1200ac:white:sata";
 	};
 };
 
