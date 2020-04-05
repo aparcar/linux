@@ -12,43 +12,43 @@
 
 / {
 	model = "Linksys WRT3200ACM";
-	compatible = "linksys,rango", "linksys,armada385", "marvell,armada385",
-		     "marvell,armada380";
+	compatible = "linksys,wrt3200acm", "linksys,rango", "linksys,armada385",
+		     "marvell,armada385", "marvell,armada380";
 };
 
 &expander0 {
 	wan_amber@0 {
-		label = "rango:amber:wan";
+		label = "wrt3200acm:amber:wan";
 		reg = <0x0>;
 	};
 
 	wan_white@1 {
-		label = "rango:white:wan";
+		label = "wrt3200acm:white:wan";
 		reg = <0x1>;
 	};
 
 	usb2@5 {
-		label = "rango:white:usb2";
+		label = "wrt3200acm:white:usb2";
 		reg = <0x5>;
 	};
 
 	usb3_1@6 {
-		label = "rango:white:usb3_1";
+		label = "wrt3200acm:white:usb3_1";
 		reg = <0x6>;
 	};
 
 	usb3_2@7 {
-		label = "rango:white:usb3_2";
+		label = "wrt3200acm:white:usb3_2";
 		reg = <0x7>;
 	};
 
 	wps_white@8 {
-		label = "rango:white:wps";
+		label = "wrt3200acm:white:wps";
 		reg = <0x8>;
 	};
 
 	wps_amber@9 {
-		label = "rango:amber:wps";
+		label = "wrt3200acm:amber:wps";
 		reg = <0x9>;
 	};
 };
@@ -56,22 +56,22 @@
 &gpio_leds {
 	power {
 		gpios = <&gpio1 24 GPIO_ACTIVE_HIGH>;
-		label = "rango:white:power";
+		label = "wrt3200acm:white:power";
 	};
 
 	sata {
 		gpios = <&gpio0 21 GPIO_ACTIVE_LOW>;
-		label = "rango:white:sata";
+		label = "wrt3200acm:white:sata";
 	};
 
 	wlan_2g {
 		gpios = <&gpio1 13 GPIO_ACTIVE_LOW>;
-		label = "rango:white:wlan_2g";
+		label = "wrt3200acm:white:wlan_2g";
 	};
 
 	wlan_5g {
 		gpios = <&gpio1 14 GPIO_ACTIVE_LOW>;
-		label = "rango:white:wlan_5g";
+		label = "wrt3200acm:white:wlan_5g";
 	};
 };
 
