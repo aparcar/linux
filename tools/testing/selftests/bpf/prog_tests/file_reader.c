@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0
 /* Copyright (c) 2025 Meta Platforms, Inc. and affiliates. */
+#define _GNU_SOURCE
 
 #include <test_progs.h>
 #include <network_helpers.h>
