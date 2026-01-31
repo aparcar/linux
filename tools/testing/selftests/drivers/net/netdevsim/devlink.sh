@@ -32,7 +32,7 @@ devlink_wait()
 
 fw_flash_test()
 {
-	DUMMYFILE=$(find /lib/firmware -type f -printf '%P\n' | head -1)
+	DUMMYFILE=$(find /lib/firmware -type f 2>/dev/null | head -1 | sed 's|^/lib/firmware/||')
 	RET=0
 
 	if [ -z "$DUMMYFILE" ]

@@ -53,7 +53,7 @@ echo 'taskset -c -p $qemu_pid > $resdir/qemu-affinity' >> $T/qemu-cmd
 echo "NOTE: $QEMU either did not run or was interactive" > $resdir/console.log
 
 # Attempt to run qemu
-kstarttime=`gawk 'BEGIN { print systime() }' < /dev/null`
+kstarttime=`date +%s < /dev/null`
 ( . $T/qemu-cmd; wait `cat  $resdir/qemu-pid`; echo $? > $resdir/qemu-retval ) &
 commandcompleted=0
 if test -z "$TORTURE_KCONFIG_GDB_ARG"
@@ -84,7 +84,7 @@ then
 	echo 'After symbols load and the "(gdb)" prompt appears:' > /dev/tty
 	echo "    target remote :1234" > /dev/tty
 	echo "    continue" > /dev/tty
-	kstarttime=`gawk 'BEGIN { print systime() }' < /dev/null`
+	kstarttime=`date +%s < /dev/null`
 fi
 while :
 do
@@ -92,7 +92,7 @@ do
 	then
 		qemu_pid=`cat "$resdir/qemu-pid"`
 	fi
-	kruntime=`gawk 'BEGIN { print systime() - '"$kstarttime"' }' < /dev/null`
+	kruntime=`echo $(( $(date +%s) - kstarttime ))`
 	if test -z "$qemu_pid" || kill -0 "$qemu_pid" > /dev/null 2>&1
 	then
 		if test -n "$TORTURE_KCONFIG_GDB_ARG"
@@ -140,7 +140,7 @@ then
 			kill -KILL $qemu_pid
 			break
 		fi
-		kruntime=`gawk 'BEGIN { print systime() - '"$kstarttime"' }' < /dev/null`
+		kruntime=`echo $(( $(date +%s) - kstarttime ))`
 		if kill -0 $qemu_pid > /dev/null 2>&1
 		then
 			:

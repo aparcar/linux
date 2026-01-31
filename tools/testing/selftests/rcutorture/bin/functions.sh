@@ -112,7 +112,7 @@ configfrag_hotplug_cpu () {
 #
 # Returns a cookie identifying the current time.
 get_starttime () {
-	awk 'BEGIN { print systime() }' < /dev/null
+	date +%s
 }
 
 # get_starttime_duration starttime
@@ -120,25 +120,23 @@ get_starttime () {
 # Given the return value from get_starttime, compute a human-readable
 # string denoting the time since get_starttime.
 get_starttime_duration () {
-	awk -v starttime=$1 '
-	BEGIN {
-		ts = systime() - starttime; 
-		tm = int(ts / 60);
-		th = int(ts / 3600);
-		td = int(ts / 86400);
-		d = td;
-		h = th - td * 24;
-		m = tm - th * 60;
-		s = ts - tm * 60;
-		if (d >= 1)
-			printf "%dd %d:%02d:%02d\n", d, h, m, s
-		else if (h >= 1)
-			printf "%d:%02d:%02d\n", h, m, s
-		else if (m >= 1)
-			printf "%d:%02d.0\n", m, s
-		else
-			print s " seconds"
-	}' < /dev/null
+	local ts=$(( $(date +%s) - $1 ))
+	local tm=$(( ts / 60 ))
+	local th=$(( ts / 3600 ))
+	local td=$(( ts / 86400 ))
+	local d=$td
+	local h=$(( th - td * 24 ))
+	local m=$(( tm - th * 60 ))
+	local s=$(( ts - tm * 60 ))
+	if [ $d -ge 1 ]; then
+		printf "%dd %d:%02d:%02d\n" $d $h $m $s
+	elif [ $h -ge 1 ]; then
+		printf "%d:%02d:%02d\n" $h $m $s
+	elif [ $m -ge 1 ]; then
+		printf "%d:%02d.0\n" $m $s
+	else
+		echo "$s seconds"
+	fi
 }
 
 # identify_boot_image qemu-cmd
