@@ -8,6 +8,8 @@
 #ifndef SELFTEST_KVM_TEST_UTIL_H
 #define SELFTEST_KVM_TEST_UTIL_H
 
+#define _GNU_SOURCE
+
 #include <setjmp.h>
 #include <signal.h>
 #include <stdlib.h>

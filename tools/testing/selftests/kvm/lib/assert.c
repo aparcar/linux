@@ -6,7 +6,17 @@
  */
 #include "test_util.h"
 
+/*
+ * backtrace() and backtrace_symbols_fd() are glibc specific. Provide
+ * stub implementations for non-glibc C libraries.
+ */
+#ifdef __GLIBC__
 #include <execinfo.h>
+#else
+static int backtrace(void **buffer, int size) { return 0; }
+static void backtrace_symbols_fd(void *const *buffer, int size, int fd) {}
+#endif
+
 #include <sys/syscall.h>
 
 #include "kselftest.h"

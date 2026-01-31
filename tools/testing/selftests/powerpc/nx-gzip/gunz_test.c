@@ -50,7 +50,6 @@
 #include <sys/fcntl.h>
 #include <sys/mman.h>
 #include <endian.h>
-#include <bits/endian.h>
 #include <sys/ioctl.h>
 #include <assert.h>
 #include <errno.h>

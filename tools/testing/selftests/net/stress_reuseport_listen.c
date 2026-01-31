@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0
+#define _GNU_SOURCE
 
 /* Copyright (c) 2022 Meta Platforms, Inc. and affiliates. */
 
