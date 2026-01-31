@@ -186,7 +186,7 @@ mirred_egress_to_ingress_test()
 	tc_check_packets "dev $swp1 ingress" 112 1
 	check_err $? "didn't receive reply to first packet"
 
-	ping 192.0.2.2 -I$h1 -c1 -w1 -q 1>/dev/null 2>&1
+	ping -I$h1 -c1 -w1 -q 192.0.2.2 1>/dev/null 2>&1
 
 	tc_check_packets "dev $h1 egress" 100 2
 	check_err $? "didn't mirror second packet"

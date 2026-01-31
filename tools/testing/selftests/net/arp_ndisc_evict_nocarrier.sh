@@ -70,7 +70,7 @@ setup_v4() {
     sysctl -w "$1" >/dev/null 2>&1
 
     # Establish an ARP cache entry
-    ping -c1 -I veth0 $V4_ADDR1 -q >/dev/null 2>&1
+    ping -c1 -I veth0 -q $V4_ADDR1 >/dev/null 2>&1
     # Should have the veth1 entry in ARP table
     ip neigh get $V4_ADDR1 dev veth0 >/dev/null 2>&1
     if [ $? -ne 0 ]; then

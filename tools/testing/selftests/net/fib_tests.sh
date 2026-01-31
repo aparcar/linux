@@ -1797,7 +1797,7 @@ ipv4_local_rt_cache()
 	run_cmd "ip netns exec $test-ns ip addr add 10.1.1.1/32 dev veth-inside"
 	run_cmd "ip netns exec $test-ns ip route add 10.0.0.1/32 dev veth-inside"
 	run_cmd "ip netns exec $test-ns ip route add default via 10.0.0.1"
-	run_cmd "ip netns exec $test-ns ping 10.0.0.1 -c 1 -i 1"
+	run_cmd "ip netns exec $test-ns ping -c 1 -i 1 10.0.0.1"
 	run_cmd "ip link delete vrf-100"
 
 	# if we do not hang test is a success

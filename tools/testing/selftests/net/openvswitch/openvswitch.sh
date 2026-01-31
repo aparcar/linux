@@ -498,7 +498,7 @@ test_ct_connect_v4 () {
 		     return 1
 
 	# do a ping
-	ovs_sbx "test_ct_connect_v4" ip netns exec client ping 172.31.110.20 -c 3 || return 1
+	ovs_sbx "test_ct_connect_v4" ip netns exec client ping -c 3 172.31.110.20 || return 1
 
 	# create an echo server in 'server'
 	echo "server" | \
@@ -553,7 +553,7 @@ test_connect_v4 () {
 		'in_port(2),eth(),eth_type(0x0800),ipv4(src=172.31.110.20)' '1' || return 1
 
 	# do a ping
-	ovs_sbx "test_connect_v4" ip netns exec client ping 172.31.110.20 -c 3 || return 1
+	ovs_sbx "test_connect_v4" ip netns exec client ping -c 3 172.31.110.20 || return 1
 
 	info "done..."
 	return 0
@@ -600,7 +600,7 @@ test_nat_connect_v4 () {
 		"recirc_id(0x2),ct_state(+trk-inv),in_port(2),eth(),eth_type(0x0800),ipv4()" "1"
 
 	# do a ping
-	ovs_sbx "test_nat_connect_v4" ip netns exec client ping 192.168.0.20 -c 3 || return 1
+	ovs_sbx "test_nat_connect_v4" ip netns exec client ping -c 3 192.168.0.20 || return 1
 
 	# create an echo server in 'server'
 	echo "server" | \

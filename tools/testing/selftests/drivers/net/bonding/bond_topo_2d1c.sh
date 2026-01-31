@@ -153,9 +153,9 @@ bond_check_connection()
 {
 	local msg=${1:-"check connection"}
 
-	slowwait 2 ip netns exec ${s_ns} ping ${c_ip4} -c 1 -W 0.1 &> /dev/null
-	ip netns exec ${s_ns} ping ${c_ip4} -c5 -i 0.1 &>/dev/null
+	slowwait 2 ip netns exec ${s_ns} ping -c 1 -W 0.1 ${c_ip4} &> /dev/null
+	ip netns exec ${s_ns} ping -c5 -i 0.1 ${c_ip4} &>/dev/null
 	check_err $? "${msg}: ping failed"
-	ip netns exec ${s_ns} ping6 ${c_ip6} -c5 -i 0.1 &>/dev/null
+	ip netns exec ${s_ns} ping6 -c5 -i 0.1 ${c_ip6} &>/dev/null
 	check_err $? "${msg}: ping6 failed"
 }
