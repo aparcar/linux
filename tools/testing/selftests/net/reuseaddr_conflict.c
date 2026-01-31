@@ -6,6 +6,7 @@
  * If we open an ipv4 socket on a port with reuseaddr we shouldn't reset the tb
  * when we open the ipv6 conterpart, which is what was happening previously.
  */
+#define _GNU_SOURCE
 #include <errno.h>
 #include <error.h>
 #include <arpa/inet.h>

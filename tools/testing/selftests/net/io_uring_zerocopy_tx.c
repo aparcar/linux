@@ -1,5 +1,6 @@
 /* SPDX-License-Identifier: MIT */
 /* based on linux-kernel/tools/testing/selftests/net/msg_zerocopy.c */
+#define _GNU_SOURCE
 #include <assert.h>
 #include <errno.h>
 #include <error.h>

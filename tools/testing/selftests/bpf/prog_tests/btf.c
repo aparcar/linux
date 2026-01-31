@@ -1,5 +1,6 @@
 /* SPDX-License-Identifier: GPL-2.0 */
 /* Copyright (c) 2018 Facebook */
+#define _GNU_SOURCE
 
 #include <linux/bpf.h>
 #include <linux/btf.h>

@@ -41,7 +41,7 @@ else
 		title="$title ($ngpsps/s)"
 	fi
 	echo $title $stopstate $fwdprog
-	nclosecalls=`grep --binary-files=text 'torture: Reader Batch' $i/console.log | tail -1 | \
+	nclosecalls=`grep -a 'torture: Reader Batch' $i/console.log | tail -1 | \
 		awk -v sum=0 '
 		{
 			for (i = 0; i <= NF; i++) {

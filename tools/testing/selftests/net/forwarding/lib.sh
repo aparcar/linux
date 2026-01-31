@@ -94,7 +94,7 @@ driver_name_get()
 	local driver_path="/sys/class/net/$dev/device/driver"
 
 	if [[ -L $driver_path ]]; then
-		basename `realpath $driver_path`
+		basename `readlink -f $driver_path`
 	fi
 }
 

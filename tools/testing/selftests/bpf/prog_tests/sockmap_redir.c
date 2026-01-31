@@ -19,6 +19,7 @@
  * AF_VSOCK, SOCK_STREAM
  * AF_VSOCK, SOCK_SEQPACKET
  */
+#define _GNU_SOURCE
 
 #include <errno.h>
 #include <error.h>

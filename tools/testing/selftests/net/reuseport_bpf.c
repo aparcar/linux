@@ -6,6 +6,7 @@
  * result.  These tests are run for each supported address family and protocol.
  * Additionally, a few edge cases in the implementation are tested.
  */
+#define _GNU_SOURCE
 
 #include <errno.h>
 #include <error.h>

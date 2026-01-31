@@ -25,7 +25,7 @@ spinmax=${5-1000}
 
 n=1
 
-starttime=`gawk 'BEGIN { print systime(); }' < /dev/null`
+starttime=`date +%s`
 
 nohotplugcpus=
 for i in /sys/devices/system/cpu/cpu[0-9]*
@@ -58,7 +58,7 @@ function timecheck {
 while :
 do
 	# Check for done.
-	t=`gawk -v s=$starttime 'BEGIN { print systime() - s; }' < /dev/null`
+	t=$(( $(date +%s) - starttime ))
 	if test "$t" -gt "$duration"
 	then
 		exit 0;
@@ -81,8 +81,8 @@ do
 	# Do not leave out non-hot-pluggable CPUs
 	cpus="$cpus $nohotplugcpus"
 
-	cpumask=`awk -v cpus="$cpus" -v me=$me -v n=$n 'BEGIN {
-		srand(n + me + systime());
+	cpumask=`awk -v cpus="$cpus" -v me=$me -v n=$n -v seed=$(date +%s) 'BEGIN {
+		srand(n + me + seed);
 		ncpus = split(cpus, ca);
 		print ca[int(rand() * ncpus + 1)];
 	}' < /dev/null`
@@ -94,16 +94,16 @@ do
 	fi
 
 	# Sleep a random duration
-	sleeptime=`awk -v me=$me -v n=$n -v sleepmax=$sleepmax 'BEGIN {
-		srand(n + me + systime());
+	sleeptime=`awk -v me=$me -v n=$n -v sleepmax=$sleepmax -v seed=$(date +%s) 'BEGIN {
+		srand(n + me + seed);
 		printf("%06d", int(rand() * sleepmax));
 	}' < /dev/null`
 	n=$(($n+1))
 	sleep .$sleeptime
 
 	# Spin a random duration, but with rather coarse granularity.
-	limit=`awk -v me=$me -v n=$n -v spinmax=$spinmax 'BEGIN {
-		srand(n + me + systime());
+	limit=`awk -v me=$me -v n=$n -v spinmax=$spinmax -v seed=$(date +%s) 'BEGIN {
+		srand(n + me + seed);
 		printf("%06d", int(rand() * spinmax));
 	}' < /dev/null`
 	n=$(($n+1))

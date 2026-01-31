@@ -31,7 +31,7 @@ check_connection()
 	RET=0
 
 	sleep 0.25
-	ip netns exec ${ns} ping ${target} -c 4 -i 0.1 &>/dev/null
+	ip netns exec ${ns} ping -c 4 -i 0.1 ${target} &>/dev/null
 	check_err $? "ping failed"
 	log_test "${bond_mode}/${xvlan_type}_${xvlan_mode}: ${message}"
 }

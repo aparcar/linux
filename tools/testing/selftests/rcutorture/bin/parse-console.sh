@@ -27,7 +27,8 @@ else
 	echo $title unreadable console output file: $file
 	exit 1
 fi
-if grep -Pq '\x00' < $file
+# Check for null bytes (BusyBox-compatible, avoid grep -P)
+if [ "$(wc -c < "$file")" != "$(tr -d '\0' < "$file" | wc -c)" ]
 then
 	print_warning Console output contains nul bytes, old qemu still running?
 fi
@@ -40,7 +41,7 @@ then
 
 	if grep -q FAILURE $file || grep -q -e '-torture.*!!!' $file
 	then
-		nerrs=`grep --binary-files=text '!!!' $file |
+		nerrs=`grep -a '!!!' $file |
 		tail -1 |
 		awk '
 		{
@@ -64,7 +65,7 @@ then
 		exit
 	fi
 
-	grep --binary-files=text 'torture:.*ver:' $file |
+	grep -a 'torture:.*ver:' $file |
 	grep -E --binary-files=text -v '\(null\)|rtc: 000000000* ' |
 	sed -e 's/^(initramfs)[^]]*] //' -e 's/^\[[^]]*] //' |
 	sed -e 's/^.*ver: //' |
@@ -108,7 +109,7 @@ then
 			echo "   " $file
 			exit 3
 		fi
-		echo $title no success message, `grep --binary-files=text 'ver:' $file | wc -l` successful version messages
+		echo $title no success message, `grep -a 'ver:' $file | wc -l` successful version messages
 		if test -s $T.seq
 		then
 			print_warning $title `cat $T.seq`

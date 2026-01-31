@@ -3,6 +3,7 @@
 /*
  * Tests for sockmap/sockhash holding kTLS sockets.
  */
+#define _GNU_SOURCE
 #include <error.h>
 #include <netinet/tcp.h>
 #include <linux/tls.h>

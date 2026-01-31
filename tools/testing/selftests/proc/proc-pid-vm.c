@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: ISC
 /*
  * Copyright (c) 2019 Alexey Dobriyan <adobriyan@gmail.com>
  *
@@ -13,6 +14,7 @@
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
+#define _GNU_SOURCE
 /*
  * Fork and exec tiny 1 page executable which precisely controls its VM.
  * Test /proc/$PID/maps

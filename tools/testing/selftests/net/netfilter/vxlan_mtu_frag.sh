@@ -102,7 +102,7 @@ test_large_mtu_tagged_traffic()
         ip -n "$vtep" link set vxd mtu 1000
         ip -n "$host" neigh add 10.0.$vid.2 lladdr ca:fe:ba:be:00:01 dev host-eth0.$vid
         ip netns exec "$host" \
-            ping -q 10.0.$vid.2 -I host-eth0.$vid -c 1 -W 0.5 -s2000 > /dev/null 2>&1
+            ping -q -I host-eth0.$vid -c 1 -W 0.5 -s2000 10.0.$vid.2 > /dev/null 2>&1
     done
     return 0
 }

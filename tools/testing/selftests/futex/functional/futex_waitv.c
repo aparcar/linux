@@ -4,6 +4,7 @@
  *
  * Copyright 2021 Collabora Ltd.
  */
+#define _GNU_SOURCE
 
 #include <errno.h>
 #include <error.h>

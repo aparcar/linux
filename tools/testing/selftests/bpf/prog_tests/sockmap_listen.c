@@ -7,6 +7,7 @@
  *  2. BPF redirect helpers - bpf_{sk,msg}_redirect_map
  *  3. BPF reuseport helper - bpf_sk_select_reuseport
  */
+#define _GNU_SOURCE
 
 #include <linux/compiler.h>
 #include <errno.h>

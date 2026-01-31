@@ -36,7 +36,7 @@ virtio_device_get()
 	local dev=$1; shift
 	local device_path="/sys/class/net/$dev/device/"
 
-	basename `realpath $device_path`
+	basename `readlink -f $device_path`
 }
 
 virtio_device_rebind()
