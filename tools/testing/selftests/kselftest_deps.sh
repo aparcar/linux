@@ -118,7 +118,7 @@ fi
 # 	gpio/Makefile:LDLIBS += $(VAR_LDLIBS)
 # Append space at the end of the list to append more tests.
 
-l1_tests=$(grep -r --include=Makefile "^LDLIBS" | \
+l1_tests=$(find . -name Makefile | xargs grep -H "^LDLIBS" | \
 		grep -v "$filter" | awk -F: '{print $1}' | uniq)
 
 # Level 2: LDLIBS set dynamically.
@@ -131,7 +131,7 @@ l1_tests=$(grep -r --include=Makefile "^LDLIBS" | \
 # 	memfd/Makefile:$(OUTPUT)/fuse_mnt: LDLIBS += $(VAR_LDLIBS)
 # Append space at the end of the list to append more tests.
 
-l2_tests=$(grep -r --include=Makefile ": LDLIBS" | \
+l2_tests=$(find . -name Makefile | xargs grep -H ": LDLIBS" | \
 		grep -v "$filter" | awk -F: '{print $1}' | uniq)
 
 # Level 3
@@ -143,7 +143,7 @@ l2_tests=$(grep -r --include=Makefile ": LDLIBS" | \
 # memfd/Makefile
 #	VAR_LDLIBS := $(shell pkg-config fuse --libs 2>/dev/null)
 
-l3_tests=$(grep -r --include=Makefile "^VAR_LDLIBS" | \
+l3_tests=$(find . -name Makefile | xargs grep -H "^VAR_LDLIBS" | \
 		grep -v "pkg-config\|PKG_CONFIG" | awk -F: '{print $1}' | uniq)
 
 # Level 4
@@ -153,7 +153,7 @@ l3_tests=$(grep -r --include=Makefile "^VAR_LDLIBS" | \
 # e.g:
 # netfilter/Makefile
 #	LDLIBS += $(shell $(HOSTPKG_CONFIG) --libs libmnl 2>/dev/null || echo -lmnl)
-l4_tests=$(grep -r --include=Makefile "^LDLIBS" | \
+l4_tests=$(find . -name Makefile | xargs grep -H "^LDLIBS" | \
 		grep "pkg-config\|PKG_CONFIG" | awk -F: '{print $1}' | uniq)
 
 # Level 5
@@ -162,7 +162,7 @@ l4_tests=$(grep -r --include=Makefile "^LDLIBS" | \
 # e.g.:
 # mm/Makefile
 #	$(OUTPUT)/gup_longterm: LDLIBS += $(IOURING_EXTRA_LIBS)
-l5_tests=$(grep -r --include=Makefile "LDLIBS +=.*\$(IOURING_EXTRA_LIBS)" | \
+l5_tests=$(find . -name Makefile | xargs grep -H 'LDLIBS +=.*\$(IOURING_EXTRA_LIBS)' | \
 	awk -F: '{print $1}' | uniq)
 
 #echo l1_tests $l1_tests
