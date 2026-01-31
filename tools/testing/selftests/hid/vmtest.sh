@@ -276,7 +276,7 @@ vm_wait_for_ssh() {
 }
 
 vm_mount_bpffs() {
-	vm_ssh -- mount bpffs -t bpf /sys/fs/bpf
+	vm_ssh -- mount -t bpf bpffs /sys/fs/bpf
 }
 
 __log_stdin() {
