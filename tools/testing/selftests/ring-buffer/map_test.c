@@ -4,6 +4,7 @@
  *
  * Copyright (c) 2024 Vincent Donnefort <vdonnefort@google.com>
  */
+#define _GNU_SOURCE
 #include <fcntl.h>
 #include <sched.h>
 #include <stdbool.h>

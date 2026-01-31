@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0
 /* Copyright (c) 2021 Facebook */
+#define _GNU_SOURCE
 #include <test_progs.h>
 #include "get_branch_snapshot.skel.h"
 

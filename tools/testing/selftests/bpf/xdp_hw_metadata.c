@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0
+#define _GNU_SOURCE
 
 /* Reference program for verifying XDP metadata on real HW. Functional test
  * only, doesn't test the performance.

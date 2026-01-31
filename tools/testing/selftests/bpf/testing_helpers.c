@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: (LGPL-2.1 OR BSD-2-Clause)
 /* Copyright (C) 2019 Netronome Systems, Inc. */
 /* Copyright (C) 2020 Facebook, Inc. */
+#define _GNU_SOURCE
 #include <ctype.h>
 #include <stdlib.h>
 #include <string.h>

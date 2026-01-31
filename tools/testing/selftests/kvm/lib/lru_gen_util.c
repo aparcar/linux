@@ -2,6 +2,7 @@
 /*
  * Copyright (C) 2025, Google LLC.
  */
+#define _GNU_SOURCE
 
 #include <time.h>
 
